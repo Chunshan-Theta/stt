@@ -26,7 +26,7 @@ function App() {
   const fetchRecords = async (type) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5001/api/records?type=${type}`);
+      const res = await axios.get(`/api/records?type=${type}`);
       setRecords(res.data);
     } catch (err) {
       console.error("Failed to fetch records:", err);
@@ -53,7 +53,7 @@ function App() {
       formData.append("service", selectedService);
 
       const res = await axios.post(
-        "http://localhost:5001/api/transcripts/upload",
+        "/api/transcripts/upload",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -79,7 +79,7 @@ function App() {
       formData.append("service", selectedService);
 
       const res = await axios.post(
-        "http://localhost:5001/api/summaries/upload",
+        "/api/summaries/upload",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -105,7 +105,7 @@ function App() {
       formData.append("service", selectedService);
 
       const res = await axios.post(
-        "http://localhost:5001/api/meetingNotes/upload",
+        "/api/meetingNotes/upload",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -128,7 +128,7 @@ function App() {
   const handleDeleteRecord = async (id) => {
     if (!window.confirm("確定要刪除嗎？")) return;
     try {
-      await axios.delete(`http://localhost:5001/api/records/${id}`);
+      await axios.delete(`/api/records/${id}`);
       setRecords(records.filter((r) => r._id !== id));
       if (selectedRecord?._id === id) setSelectedRecord(null);
     } catch (err) {

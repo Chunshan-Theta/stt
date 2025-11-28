@@ -8,7 +8,7 @@ function HistoryList({ items, onView, onDelete }) {
           <strong>{item.filename}</strong>
           <button onClick={() => onView(item)}>查看</button>
           <button onClick={() => onDelete(item._id)}>刪除</button>
-          <a href={`http://localhost:5001/uploads/${item.filename}`} download>下載</a>
+          <a href={`/uploads/${item.filename}`} download>下載</a>
         </li>
       ))}
     </ul>

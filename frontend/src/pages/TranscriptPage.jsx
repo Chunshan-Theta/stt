@@ -9,7 +9,7 @@ function TranscriptPage() {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/records?type=transcript");
+      const res = await axios.get("/api/records?type=transcript");
       setHistory(res.data);
     } catch (err) {
       console.error(err);
@@ -26,7 +26,7 @@ function TranscriptPage() {
       formData.append("audio", file);
 
       const res = await axios.post(
-        `http://localhost:5001/api/records/upload?type=transcript&service=${service}`,
+        `/api/records/upload?type=transcript&service=${service}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -41,7 +41,7 @@ function TranscriptPage() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/records/${id}`);
+      await axios.delete(`/api/records/${id}`);
       fetchHistory();
       setSelectedContent("");
     } catch (err) {

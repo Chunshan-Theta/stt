@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # install dependencies
-# RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # copy app source
 COPY . .
